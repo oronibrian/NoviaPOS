@@ -134,5 +134,9 @@ public class OrderMaster implements Serializable {
         this.orderdestination = orderdestination;
     }
 
+    public void setUser() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }

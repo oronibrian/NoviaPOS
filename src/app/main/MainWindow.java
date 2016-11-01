@@ -10,8 +10,10 @@ import java.awt.Toolkit;
 import ke.novia.controller.pos.sale.MenuController;
 import ke.novia.controller.pos.sale.OrderController;
 import ke.novia.controller.pos.sale.OrderDestinationController;
+import ke.novia.controller.pos.sale.OrderMasterController;
 import ke.novia.controller.pos.sale.OrderMenuCategoryController;
 import ke.novia.controller.pos.sale.OrderStatusController;
+import ke.novia.controller.pos.sale.UserController;
 
 /**
  *
@@ -40,6 +42,8 @@ public class MainWindow extends javax.swing.JFrame {
         pnlOrders = new javax.swing.JPanel();
         btnBarOrder = new javax.swing.JButton();
         btnKitchenOrder = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btnneworder = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -51,6 +55,7 @@ public class MainWindow extends javax.swing.JFrame {
         copyMenuItem = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
         deleteMenuItem = new javax.swing.JMenuItem();
+        deleteMenuItem1 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentsMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -74,31 +79,56 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        btnneworder.setText("New Order");
+        btnneworder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnneworderActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnneworder)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnneworder, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pnlOrdersLayout = new javax.swing.GroupLayout(pnlOrders);
         pnlOrders.setLayout(pnlOrdersLayout);
         pnlOrdersLayout.setHorizontalGroup(
             pnlOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrdersLayout.createSequentialGroup()
-                .addContainerGap(330, Short.MAX_VALUE)
-                .addComponent(btnBarOrder)
+                .addGap(53, 440, Short.MAX_VALUE)
+                .addGroup(pnlOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBarOrder, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnKitchenOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
-            .addGroup(pnlOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrdersLayout.createSequentialGroup()
-                    .addContainerGap(303, Short.MAX_VALUE)
-                    .addComponent(btnKitchenOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(22, 22, 22)))
+            .addGroup(pnlOrdersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlOrdersLayout.setVerticalGroup(
             pnlOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlOrdersLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnKitchenOrder)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBarOrder)
-                .addContainerGap(162, Short.MAX_VALUE))
-            .addGroup(pnlOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlOrdersLayout.createSequentialGroup()
-                    .addGap(42, 42, 42)
-                    .addComponent(btnKitchenOrder)
-                    .addContainerGap(212, Short.MAX_VALUE)))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         fileMenu.setMnemonic('f');
@@ -167,6 +197,15 @@ public class MainWindow extends javax.swing.JFrame {
         });
         editMenu.add(deleteMenuItem);
 
+        deleteMenuItem1.setMnemonic('d');
+        deleteMenuItem1.setText("Add User");
+        deleteMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMenuItem1ActionPerformed(evt);
+            }
+        });
+        editMenu.add(deleteMenuItem1);
+
         menuBar.add(editMenu);
 
         helpMenu.setMnemonic('h');
@@ -192,7 +231,9 @@ public class MainWindow extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlOrders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -235,6 +276,18 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteMenuItemActionPerformed
 
+    private void deleteMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuItem1ActionPerformed
+
+        UserController uc = context.getBean(UserController.class);
+       uc.openUserWindow(this);
+    }//GEN-LAST:event_deleteMenuItem1ActionPerformed
+
+    private void btnneworderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnneworderActionPerformed
+       OrderMasterController sc = context.getBean(OrderMasterController.class);
+        sc.openOrderMasterWindow(MainWindow.this);
+        
+    }//GEN-LAST:event_btnneworderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -274,14 +327,17 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JButton btnBarOrder;
     private javax.swing.JButton btnKitchenOrder;
+    private javax.swing.JButton btnneworder;
     private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem deleteMenuItem;
+    private javax.swing.JMenuItem deleteMenuItem1;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem hotelMenuItem;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;

@@ -33,7 +33,7 @@ public class OrderStatus implements Serializable {
 
     @Override
     public String toString() {
-        return "OrderStatus{" + "id=" + id + ", status=" + status + '}';
+        return  status ;
     }
 
     public String getStatus() {

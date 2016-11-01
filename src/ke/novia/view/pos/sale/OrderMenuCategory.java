@@ -15,6 +15,8 @@ public class OrderMenuCategory extends javax.swing.JDialog {
     public OrderMenuCategory(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         this.setLocationRelativeTo(null);
+        this.pack();
     }
 
     /**
